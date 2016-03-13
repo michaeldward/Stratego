@@ -18,8 +18,13 @@ public class GUI extends JFrame //implements ActionListener, KeyListener
 
     public GUI() throws IOException {
         super();
-        this.setLayout(null);
-        this.getContentPane().setLayout(null);
+        //this.setLayout(new BorderLayout());
+        Container pane = this.getContentPane();
+        pane.setBackground(Color.BLACK);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        //this.getContentPane().setLayout(new BorderLayout());
         this.setVisible(true);
         this.setSize(1100, 1100);
         this.setResizable(false);
@@ -28,18 +33,20 @@ public class GUI extends JFrame //implements ActionListener, KeyListener
         Image img = ImageIO.read(getClass().getResource("images/board.png"));
         img = img.getScaledInstance(1000, 1000, Image.SCALE_DEFAULT);
         testButton = new JButton();
-        background = new JLabel();
+        background = new JLabel("This Label");
         background.setVisible(true);
         background.setSize(100, 100);
         background.setLocation(100, 100);
-        background.setIcon(new ImageIcon(img));
-        //this.getContentPane().add(background);
+        //background.setIcon(new ImageIcon(img));
+        pane.add(background);
         //setContentPane(new JLabel(new ImageIcon("images/board.png")));
         //this.getGraphics().drawImage(img, 0, 0, null);
         testButton.setSize(1000, 1000);
         testButton.setLocation(0, 0);
         testButton.setIcon(new ImageIcon(img));
-        this.getContentPane().add(testButton);
+        pane.add(testButton);
+        //this.add(panel);
+        //this.getContentPane().add(testButton);
     }
 
     public static void main(String[] args) throws IOException {
