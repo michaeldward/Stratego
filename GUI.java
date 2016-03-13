@@ -14,26 +14,32 @@ public class GUI extends JFrame //implements ActionListener, KeyListener
 {
 
     private JButton testButton;
+    private JLabel background;
 
     public GUI() throws IOException {
         super();
         this.setLayout(null);
+        this.getContentPane().setLayout(null);
         this.setVisible(true);
-        this.setSize(1000, 1000);
+        this.setSize(1100, 1100);
         this.setResizable(false);
         this.setTitle("Stratego");
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        Image img = Toolkit.getDefaultToolkit().getImage("images/board.png");
-        testButton = new JButton("Test");
-        JLabel background = new JLabel(new ImageIcon("images/board.png"));
-        background.setSize(1000, 1000);
-        background.setLocation(0, 0);
-        this.getContentPane().add(background);
+        Image img = ImageIO.read(getClass().getResource("images/board.png"));
+        img = img.getScaledInstance(1000, 1000, Image.SCALE_DEFAULT);
+        testButton = new JButton();
+        background = new JLabel();
+        background.setVisible(true);
+        background.setSize(100, 100);
+        background.setLocation(100, 100);
+        background.setIcon(new ImageIcon(img));
+        //this.getContentPane().add(background);
         //setContentPane(new JLabel(new ImageIcon("images/board.png")));
         //this.getGraphics().drawImage(img, 0, 0, null);
-        testButton.setSize(100, 50);
-        testButton.setLocation(200, 100);
-        //this.getContentPane().add(testButton);
+        testButton.setSize(1000, 1000);
+        testButton.setLocation(0, 0);
+        testButton.setIcon(new ImageIcon(img));
+        this.getContentPane().add(testButton);
     }
 
     public static void main(String[] args) throws IOException {
