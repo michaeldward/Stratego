@@ -16,37 +16,26 @@ public class GUI extends JFrame //implements ActionListener, KeyListener
     private JButton testButton;
     private JLabel background;
 
-    public GUI() throws IOException {
+    public GUI() throws IOException
+    {
         super();
-        //this.setLayout(new BorderLayout());
-        Container pane = this.getContentPane();
-        pane.setBackground(Color.BLACK);
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-
-        //this.getContentPane().setLayout(new BorderLayout());
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        //this.setLayout(null);
+        Board b1 = new Board();
+        b1.setSize(1500, 1500);
+        //JPanel p2 = new JPanel();
+        //p2.setSize(100, 500);
+        //JLabel l2 = new JLabel("Tada!");
+        //l2.setFont(new Font("TimesRoman", Font.PLAIN, 48));
+        //p2.add(l2);
+        //p2.setBackground(Color.GREEN);
+        this.getContentPane().add(b1);
+        //this.getContentPane().add(p2);
         this.setVisible(true);
-        this.setSize(1100, 1100);
+        this.setSize(1505, 1562);
         this.setResizable(false);
         this.setTitle("Stratego");
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        Image img = ImageIO.read(getClass().getResource("images/board.png"));
-        img = img.getScaledInstance(1000, 1000, Image.SCALE_DEFAULT);
-        testButton = new JButton();
-        background = new JLabel("This Label");
-        background.setVisible(true);
-        background.setSize(100, 100);
-        background.setLocation(100, 100);
-        //background.setIcon(new ImageIcon(img));
-        pane.add(background);
-        //setContentPane(new JLabel(new ImageIcon("images/board.png")));
-        //this.getGraphics().drawImage(img, 0, 0, null);
-        testButton.setSize(1000, 1000);
-        testButton.setLocation(0, 0);
-        testButton.setIcon(new ImageIcon(img));
-        pane.add(testButton);
-        //this.add(panel);
-        //this.getContentPane().add(testButton);
     }
 
     public static void main(String[] args) throws IOException {
